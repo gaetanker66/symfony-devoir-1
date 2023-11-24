@@ -15,6 +15,9 @@
                     <li class="nav-item">
                         <a class="nav-link {% if app.request.get('_route') == 'product.index' %}active{% endif %}" href="{{ url('product.index') }}">Produits</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if app.request.get('_route') == 'contact.form' %}active{% endif %}" href="{{ url('contact.form') }}">Contact</a>
+                    </li>
                 </ul>
                 <form class="d-flex" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
