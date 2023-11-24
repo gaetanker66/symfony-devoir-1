@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="row mt-4">
+        <div class="col">
+            <a href="{{ url('admin.product.index') }}" class="btn btn-primary btn-outline-light">Liste</a>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col">
+            <h2>Gestion de produit</h2>
+        </div>
+
+    {{ form_start(form, {attr : {novalidate : 'novalidate'}}) }}
+        <div class="mt-3">
+            {{ form_label(form.name, 'Nom : ') }}
+            {{ form_widget(form.name) }}
+            {{ form_errors(form.name) }}
+        </div>
+        <div class="mt-3">
+            {{ form_label(form.price, 'Prix : ') }}
+            {{ form_widget(form.price) }}
+            {{ form_errors(form.price) }}
+        </div>
+        <div class="mt-3">
+            {{ form_label(form.description, 'Description : ') }}
+            {{ form_widget(form.description) }}
+            {{ form_errors(form.description) }}
+        </div>
+        <div class="mt-3">
+            {{ form_label(form.quantity, 'Quantité : ') }}
+            {{ form_widget(form.quantity) }}
+            {{ form_errors(form.quantity) }}
+        </div>
+        <div class="mt-3">
+            {{ form_label(form.image, 'Image : ') }}
+            {{ form_widget(form.image) }}
+            {{ form_errors(form.image) }}
+        </div>
+    <div class="mt-3">
+        <button type="submit" class="btn btn-primary btn-outline-light">Envoyer</button>
+    </div>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}

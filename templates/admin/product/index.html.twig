@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div class="row mt-4">
+        <div class="col">
+            <a href="{{ url('admin.homepage.index') }}" class="btn btn-light btn-outline-danger">Revenir à la homepage mais pas la normal celle de l'administration</a>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col">
+            <h1>Administration : liste des produits</h1>
+
+            {% for success in app.flashes('success') %}
+                <p class="alert alert-success">{{ success }}</p>
+            {% endfor %}
+            {% for danger in app.flashes('danger') %}
+                <p class="alert alert-danger">{{ danger }}</p>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col"><a href="{{ url('admin.product.form') }}" class="btn btn-primary btn-outline-light">Ajouter un produit</a></div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col products">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Quantité</th>
+                    <th scope="col">Modifier</th>
+                    <th scope="col">Supprimer</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <th scope="row">{{ product.id }}</th>
+                            <td><img class="w-100" src="{{ asset('img/' ~ product.image) }}" alt=""></td>
+                            <td class="w-25">{{ product.name }}</td>
+                            <td class="w-25">{{ product.quantity }}</td>
+                            <td><a href="{{ url('admin.product.update', {id: product.id}) }}" class="btn btn-warning btn-outline-success">Modifier</a></td>
+                            <td><a href="{{ url('admin.product.delete', {id: product.id}) }}" class="btn btn-danger btn-outline-dark">Supprimer</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+{% endblock %}

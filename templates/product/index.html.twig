@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} | Tout les produits {% endblock %}
+
+{% block body %}
+    <div class="row mt-3">
+        <div class="col">
+            <h2>Products</h2>
+        </div>
+    </div>
+    <div class="row products d-flex justify-content-evenly">
+        {% for product in products %}
+            <div class="card mb-3 ps-0 pe-0" style="width: 18rem;">
+                <img class="card-img-top" src="{{ asset('/img/' ~ product.image) }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.price | format_currency('EUR', locale='fr') | replace({',00' : ''})  }}</p>
+                    <a href="{{ url('product.details', {id : product.id}) }}" class="btn btn-primary">Détails</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
